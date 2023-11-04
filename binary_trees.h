@@ -14,6 +14,13 @@ typedef struct binary_tree_s {
     struct binary_tree_s *right;
 } binary_tree_t;
 
+/*Queue struct used for storing nodes during BFS traversal*/
+typedef struct queue
+{
+    struct binary_tree_s *node;
+    struct queue *next;
+} queue_t;
+
 /* Binary Search Tree (BST), AVL Tree, and Heap Types */
 typedef binary_tree_t bst_t;
 typedef binary_tree_t avl_t;
@@ -48,6 +55,9 @@ int binary_tree_is_complete(const binary_tree_t *tree);
 int binary_tree_is_bst(const binary_tree_t *tree);
 int binary_tree_is_avl(const binary_tree_t *tree);
 int binary_tree_is_heap(const binary_tree_t *tree);
+int *heap_to_sorted_array(heap_t *heap, size_t *size);
+heap_t *last_level(heap_t **root, int height);
+int heap_extract(heap_t **root);
 
 /* Tree Traversal Functions */
 void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int));
@@ -72,5 +82,11 @@ heap_t *heap_insert(heap_t **root, int value);
 heap_t *array_to_heap(int *array, size_t size);
 int heap_extract(heap_t **root);
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
+heap_t *swap(heap_t **node);
+heap_t *heap_insert(heap_t **root, int value);
+size_t binary_tree_size(const binary_tree_t *tree);
+int binary_tree_is_complete(const binary_tree_t *tree);
+int prop_max_heap(const binary_tree_t *tree);
+int binary_tree_is_heap(const binary_tree_t *tree);
 
-#endif
+#endif /* BINARY_TREES_H */
